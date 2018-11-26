@@ -1,6 +1,7 @@
+require("dotenv").config();
 console.log('this is loaded');
 
-var Spotify = require('node-spotify-api');
+//Spotify = require('node-spotify-api');
  
 
 exports.spotify = {
@@ -9,12 +10,6 @@ exports.spotify = {
 };
 
 //id: process.env.4990777904cf4185962184e74a762e15,
+//secret: 243707e5a2154321a2b43648b9f8b817
 
-spotify
-  .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
-  .then(function(data) {
-    console.log(data); 
-  })
-  .catch(function(err) {
-    console.error('Error occurred: ' + err); 
-  });
+//Spotify = require('node-spotify-api');
