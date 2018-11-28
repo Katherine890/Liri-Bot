@@ -1,21 +1,31 @@
 require('dotenv').config();
 var request = require('request');
-spotifyApp = require('node-spotify-api');
+Spotify = require('node-spotify-api');
 
-var keys = ('Users/Katherine/liri-node-app/keys.js');
+//var keys = ('Users/Katherine/liri-node-app/keys.js');
+var keys = require('./keys');
 var spotify = new Spotify(keys.spotify);
 
+spotify.search({ 
+  type: 'track', 
+  query: 'Every Breath You Take',
+  limit: 10
+}, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+ 
+console.log(data); 
+});
 
-
-
-spotify
-  .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
-  .then(function(data) {
-    console.log(data); 
-  })
-  .catch(function(err) {
-    console.error('Error occurred: ' + err); 
-  });
+//spotify
+ // .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+ // .then(function(data) {
+  //  console.log(data); 
+  //})
+ // .catch(function(err) {
+  //  console.error('Error occurred: ' + err); 
+  //});
   
 
 
