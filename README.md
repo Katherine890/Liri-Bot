@@ -29,9 +29,12 @@ Example: "node liri.js movie-this TRON"
          "node liri.js concert-this Drake"
 
          "node liri.js spotify-this-song Redbone"
-         
+
          "node liri.js do-what-it-says movie-this"
  
 
 
 
+## Links
+http://github.com - automatic!
+[GitHub](https://github.com/Katherine890/liri-node-app)
