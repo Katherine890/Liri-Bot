@@ -36,5 +36,10 @@ Example: "node liri.js movie-this TRON"
 
 
 ## Links
-http://github.com - automatic!
 [GitHub](https://github.com/Katherine890/liri-node-app)
+
+## DEMO
+SPOTIFY: https://drive.google.com/file/d/1uvkMeL4M-uzCul7izvN1eBrIMv1IAWa3/view
+MOVIE: https://drive.google.com/file/d/1q0EZij7-LZpajBLE1rat5lRyPhErz91X/view
+
+DO-WHAT-IT-SAYS: https://drive.google.com/file/d/1o-UaCHq48y3tjcVaCTIIPfz4KoUvFQYq/view
