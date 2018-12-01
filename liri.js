@@ -2,62 +2,36 @@ require('dotenv').config();
 var request = require('request');
 Spotify = require('node-spotify-api');
 var fs = require('file-system');
-
-// BANDS IN TOWN //
-
-
-//set options for instance
-//app_id and artists are required
+var moment = require('moment');
+moment().format();
 
 
 
+// BANDS IN TOWN: CONCERTS //
 
 
 var Events = function (artist) {
   request('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp&date=upcoming',
-    function (error, response, body) {
+   function (error, response, body) {
       console.log('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      console.log('body:', body);
+     // console.log('body:', body);
+     
+      var jsonData = JSON.parse(body);
+      
+      console.log('Venue: ' + jsonData[0].venue.name);
+      console.log('Location: ' + jsonData[0].venue.city + ", " + jsonData[0].venue.region);
 
-      var BandsInTownEvents = require('bandsintown-events');
-      var Events = new BandsInTownEvents(); 
-      Events.setParams({
-        'app_id': 'codingbootcamp', //can be anything
-        'artists': ['Drake']
-      })
+     // console.log('Date: ' + jsonData[0].venue.datetime);
 
-      //var bands = event.venue.name;
-     // for (var i = 0; i < bands.length; i++) {
-       // console.log(i);
-       // console.log('Venue: ' + bands[i].venue.name);
-       // console.log('Location: ' + bands[i].city + ',' + bands[i].venue.region);
-       // console.log('Date: ' + bands[i].event.datetime);
-
-
-        //get your events with success and error callbacks
-         Events.getEvents(function( events ) {
-         for(var i = 0; i < events.length; i++){
-            console.log( events[i].venue.city + ', ' + events[i].venue.region );
-         }
-          },function( errors ){
-           console.log(errors);
-          });
-
-        // var jsonData = JSON.parse(body);
-
-        // console.log('Venue:' + jsonData.venue.name);
-        // console.log('Location:' + events[i].venue.city + ", " + events[i].venue.region );
-        //  console.log('IMDb Rating:' + jsonData.event.datetime);
-
-        //  });
-
-      //}
+      var venueDate = console.log('Date: ' + moment(jsonData[0].venue.datetime).format('MM-DD-YYYY'));
+      console.log(venueDate);
+    
     });
 }
 
 
-// SPOTIFY //
+// SPOTIFY: SONGS //
 
 var getArtistNames = function (artist) {
   return artist.name;
@@ -91,13 +65,13 @@ var getMeSpotify = function (songName) {
 
 }
 
-// OMDB //
+// OMDB: MOVIES //
 var getMovie = function (movieName) {
   request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieName + '&y=&plot=short&r=json',
     function (error, response, body) {
       console.log('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      // console.log('body:', body); // Print the HTML for the Google homepage.
+    
 
       var jsonData = JSON.parse(body);
 
@@ -114,6 +88,8 @@ var getMovie = function (movieName) {
 
 }
 
+
+// DO WHAT IT SAYS
 var doWhatItSays = function () {
   fs.readFile('random.txt', 'utf8', function (err, data) {
     if (err) throw err;
@@ -129,6 +105,8 @@ var doWhatItSays = function () {
   });
 
 }
+
+
 
 // LIRI COMMANDS //
 var pick = function (caseData, functionData) {
