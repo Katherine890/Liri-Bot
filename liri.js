@@ -3,7 +3,6 @@ var request = require('request');
 Spotify = require('node-spotify-api');
 var fs = require('file-system');
 var moment = require('moment');
-moment().format();
 
 
 
@@ -12,20 +11,17 @@ moment().format();
 
 var Events = function (artist) {
   request('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp&date=upcoming',
-   function (error, response, body) {
+   function (error, response, data) {
       console.log('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
      // console.log('body:', body);
      
-      var jsonData = JSON.parse(body);
+      var jsonData = JSON.parse(data);
       
       console.log('Venue: ' + jsonData[0].venue.name);
       console.log('Location: ' + jsonData[0].venue.city + ", " + jsonData[0].venue.region);
 
-     // console.log('Date: ' + jsonData[0].venue.datetime);
-
-      var venueDate = console.log('Date: ' + moment(jsonData[0].venue.datetime).format('MM-DD-YYYY'));
-      console.log(venueDate);
+      console.log('Date: ' + moment(jsonData[0].datetime).format('L'));
     
     });
 }
