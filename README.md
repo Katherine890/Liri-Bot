@@ -24,7 +24,9 @@ Liri responds to four commands: *concert-this*, *spotify-this-song*, *movie-this
 ## Getting Started
 Users may get started by first typing in to the command line "node liri.js" and then one of the four commands (for example "movie-this"). Following is the name of the movie. By pressing enter, Liri will display the information on that specific movie.
 
-Example: "node liri.js movie-this TRON"
+Example: 
+    
+         "node liri.js movie-this TRON"
 
          "node liri.js concert-this Drake"
 
