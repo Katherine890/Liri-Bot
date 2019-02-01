@@ -12,9 +12,8 @@ var moment = require('moment');
 var Events = function (artist) {
   request('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp&date=upcoming',
    function (error, response, data) {
-      console.log('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-     // console.log('body:', body);
+      //console.log('error:', error); // Print the error if one occurred
+      //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
      
       var jsonData = JSON.parse(data);
       
@@ -65,8 +64,8 @@ var getMeSpotify = function (songName) {
 var getMovie = function (movieName) {
   request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieName + '&y=&plot=short&r=json',
     function (error, response, body) {
-      console.log('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      //console.log('error:', error); // Print the error if one occurred
+      //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     
 
       var jsonData = JSON.parse(body);
